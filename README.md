@@ -2,23 +2,30 @@
 
 ## 🤔 Why Mem-T?
 
-Think of a student taking a long, difficult exam.
+In long-horizon tasks (500+ turns), agents perform hundreds of memory operations but typically receive only a single "success/fail" reward at the very end. This **sparse reward** problem makes it impossible for the agent to know *which* step caused the failure.
 
-* **Previous Agents:** They answer 100 questions but only get a single "Pass" or "Fail" grade at the very end. They have no idea which answers were right or wrong.
-* **Mem-T:** It gets a checkmark or cross **immediately after every single step**. Because it receives constant, clear feedback (dense rewards), it learns much faster, makes fewer mistakes, and is cheaper to run.
+Mem-T solves this with **Dense Rewards**. It gives the agent feedback for every memory action (storage or retrieval). This makes long-term memory management actually learnable. 
 
-![intro](assets\intro.png)
+![intro](assets/intro.png)
 
 ## 👋🏻 Method Overview
 
-Mem-T operates as an autonomous agent with a **hierarchical memory system** consisting of Working, Factual, Experiential, and Raw memory modules to manage different types of information. Its workflow is optimized through a novel training framework called **MOT-GRPO** (Memory Operation Tree-guided GRPO). Mem-T works like a smart librarian who both organizes books and helps you find them:
+Mem-T employs a hierarchical memory system (Working, Factual, Experiential, Raw) and operates in two distinct modes:
 
-* **1. Smart Organizing (Construction):**
-  Instead of piling information up randomly, Mem-T sorts incoming data into specific boxes: **Facts** (what happened), **Experiences** (how to solve problems), and **Raw Data** (exact details), **Working Memory** (summary).
-* **2. Step-by-Step Hunting (Retrieval):**
-  When you ask a question, Mem-T doesn't just guess. It creates a **"Search Tree"** to explore different paths step-by-step. If a path finds good clues, Mem-T gets an immediate reward, teaching it to find the best answers quickly without wasting time.
+### 1. Inference (How it Works)
 
-![pipeline](assets\main.png)
+* **🧱 Continuous Construction:** Acting proactively, Mem-T automatically filters input streams and decides whether to create a concrete **Fact**, distill a reusable **Experience** (skill), or update the **Working** context. 
+
+
+* **🔍 Iterative Retrieval:** It doesn't just search once. Mem-T performs **multi-turn reasoning**: searching for a clue, analyzing it, and iteratively refining its search to piece together the final answer. 
+
+### 2. Training (How it Learns)
+
+* **🌲 Retrieval (Tree Search):** We use **MOT-GRPO** to build a "Search Tree" of possible paths. If a specific step finds valid evidence, it gets an immediate reward, teaching the agent the most efficient path to data. 
+
+* **🔙 Construction (Hindsight):** We use **Hindsight Credit Assignment**. After successfully answering a query, the system "looks back" to identify which stored memory helped. It then rewards the past action that created that memory, bridging the gap between past storage and future success.
+
+![pipeline](assets/main.png)
 
 ## 🛠️ Installation
 
