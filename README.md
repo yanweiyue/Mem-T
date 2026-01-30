@@ -4,7 +4,7 @@
 
 In long-horizon tasks (500+ turns), agents perform hundreds of memory operations but typically receive only a single "success/fail" reward at the very end. This **sparse reward** problem makes it impossible for the agent to know *which* step caused the failure.
 
-Mem-T solves this with **Dense Rewards**. It gives the agent feedback for every memory action (storage or retrieval). This makes long-term memory management actually learnable. 
+Mem-T solves this with **Dense Rewards**. It gives the agent feedback for every memory action (storage or retrieval). This makes long-term memory management actually learnable.
 
 ![intro](assets/intro.png)
 
@@ -14,15 +14,12 @@ Mem-T employs a hierarchical memory system (Working, Factual, Experiential, Raw)
 
 ### 1. Inference (How it Works)
 
-* **🧱 Continuous Construction:** Acting proactively, Mem-T automatically filters input streams and decides whether to create a concrete **Fact**, distill a reusable **Experience** (skill), or update the **Working** context. 
-
-
-* **🔍 Iterative Retrieval:** It doesn't just search once. Mem-T performs **multi-turn reasoning**: searching for a clue, analyzing it, and iteratively refining its search to piece together the final answer. 
+* **🧱 Continuous Construction:** Acting proactively, Mem-T automatically filters input streams and decides whether to create a concrete **Fact**, distill a reusable **Experience** (skill), or update the **Working** context.
+* **🔍 Iterative Retrieval:** It doesn't just search once. Mem-T performs **multi-turn reasoning**: searching for a clue, analyzing it, and iteratively refining its search to piece together the final answer.
 
 ### 2. Training (How it Learns)
 
-* **🌲 Retrieval (Tree Search):** We use **MOT-GRPO** to build a "Search Tree" of possible paths. If a specific step finds valid evidence, it gets an immediate reward, teaching the agent the most efficient path to data. 
-
+* **🌲 Retrieval (Tree Search):** We use **MOT-GRPO** to build a "Search Tree" of possible paths. If a specific step finds valid evidence, it gets an immediate reward, teaching the agent the most efficient path to data.
 * **🔙 Construction (Hindsight):** We use **Hindsight Credit Assignment**. After successfully answering a query, the system "looks back" to identify which stored memory helped. It then rewards the past action that created that memory, bridging the gap between past storage and future success.
 
 ![pipeline](assets/main.png)
@@ -113,6 +110,7 @@ Please ensure these files are correctly placed and referenced in `config.py` bef
 
 Analyze the reasoning process of our Memory Agent during inference and review the Locomo results reported in our paper:
 [Download Trajectory Data](https://drive.google.com/file/d/1HaaMaMv_JmIF1FUCqBVccBBkT3zgUMjm/view?usp=sharing)
+
 This is only intended to help you better understand the algorithmic details and directly verify the results reported in the paper; it is entirely optional.
 
 ## ⚡ Quick Start (Inference & Evaluation)
