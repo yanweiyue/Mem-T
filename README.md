@@ -1,4 +1,4 @@
-# Mem-T: Memory-Augmented Tree Search for Long-Term Memory
+# Mem-T: Densifying Rewards for Long-Horizon Memory Agents
 
 ## 🤔 Why Mem-T?
 
@@ -157,7 +157,7 @@ Key configurations are managed in `config.py`. Customizable parameters include:
 - `vector_db`: Configuration for ChromaDB (host, port, persistence settings).
 - `data_name`: Target dataset for evaluation or training.
 
-The training script will be coming soon.
+Note: We plan to open-source the training scripts as part of our roadmap, but this will take some time. We sincerely appreciate your patience in the meantime.
 
 ---
 
