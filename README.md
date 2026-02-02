@@ -1,5 +1,7 @@
 # Mem-T: Densifying Rewards for Long-Horizon Memory Agents
 
+This repo is the official implementation of [***Mem-T: Densifying Rewards for Long-Horizon Memory Agents***](http://arxiv.org/abs/2601.23014)
+
 ## 🤔 Why Mem-T?
 
 In long-horizon tasks (500+ turns), agents perform hundreds of memory operations but typically receive only a single "success/fail" reward at the very end. This **sparse reward** problem makes it impossible for the agent to know *which* step caused the failure.
@@ -157,13 +159,25 @@ Key configurations are managed in `config.py`. Customizable parameters include:
 - `vector_db`: Configuration for ChromaDB (host, port, persistence settings).
 - `data_name`: Target dataset for evaluation or training.
 
-Note: We plan to open-source the training scripts as part of our roadmap, but this will take some time. We sincerely appreciate your patience in the meantime.
+The training script will be coming soon.
 
 ---
 
 ## 📚 Citation
 
 If you find this repo useful, please consider citing our paper as follows:
+
+```
+@misc{yue2026memtdensifyingrewardslonghorizon,
+      title={Mem-T: Densifying Rewards for Long-Horizon Memory Agents}, 
+      author={Yanwei Yue and Guibin Zhang and Boci Peng and Xuanbo Fan and Jiaxin Guo and Qiankun Li and Yan Zhang},
+      year={2026},
+      eprint={2601.23014},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2601.23014}, 
+}
+```
 
 ## 🙏 Acknowledgements
 
