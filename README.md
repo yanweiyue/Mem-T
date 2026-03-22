@@ -135,6 +135,8 @@ To evaluate the model on a specific dataset (configured in `config.py` or via co
 # Set environment variables for optimal performance
 export OMP_NUM_THREADS=8
 export MKL_NUM_THREADS=8
+export OPENBLAS_NUM_THREADS=8
+export VECLIB_MAXIMUM_THREADS=8
 export VLLM_ALLOW_LONG_MAX_MODEL_LEN=1
 
 # Run the main evaluation script
@@ -160,6 +162,7 @@ Key configurations are managed in `config.py`. Customizable parameters include:
 - `data_name`: Target dataset for evaluation or training.
 
 The training script will be coming soon.
+We sincerely appreciate the researchers' feedback for highlighting the significant time consumption of our algorithm under certain conditions. We plan to prioritize further optimization of this issue in our next steps. Thank you again for your invaluable suggestions and understanding.
 
 ---
 
